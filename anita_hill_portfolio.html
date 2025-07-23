@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anita J. Hill - Digital Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f8f5fd; /* Very light lavender/off-white */
+            color: #6a1b9a; /* Darker purple for main text */
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.25rem; /* 20px */
+        }
+
+        /* Header styles */
+        header {
+            background-color: #9575cd; /* Medium Lavender - header */
+            color: #f3e5f5; /* Lightest Lavender for header text */
+            padding: 2.5rem 0; /* 40px */
+            text-align: center;
+            position: relative;
+            border-bottom-left-radius: 1.5rem; /* More rounded corners */
+            border-bottom-right-radius: 1.5rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Softer shadow */
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3.5rem; /* Larger font for impact */
+            letter-spacing: 0.05rem; /* More spacing */
+            font-weight: 800; /* Bolder */
+            color: #ffffff; /* Pure white for main title */
+        }
+        header p {
+            font-size: 1.25rem; /* Slightly larger */
+            margin-top: 0.75rem; /* 12px */
+            max-width: 55rem; /* Wider for description */
+            margin-left: auto;
+            margin-right: auto;
+            color: #f3e5f5;
+        }
+        .contact-info-header {
+            margin-top: 1.5rem; /* 24px */
+            font-size: 1rem; /* 16px */
+        }
+        .contact-info-header a {
+            color: #e1bee7; /* Lighter lavender for links */
+            text-decoration: none;
+            margin: 0 0.75rem; /* 12px */
+            transition: color 0.3s ease;
+        }
+        .contact-info-header a:hover {
+            color: #ffffff; /* White on hover */
+        }
+
+        /* Section styles */
+        .section {
+            background-color: #ffffff; /* White background for sections */
+            margin: 1.5rem 0; /* 24px margin */
+            padding: 2rem; /* 32px padding */
+            border-radius: 1rem; /* More rounded corners */
+            box-shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.08); /* Softer shadow */
+            border: 1px solid #f3e5f5; /* Subtle border */
+        }
+        .section h2 {
+            color: #9575cd; /* Medium Lavender for section titles */
+            font-size: 2.5rem; /* Larger section titles */
+            margin-bottom: 1.5rem; /* 24px */
+            border-bottom: 0.25rem solid #b39ddb; /* Lighter Lavender underline */
+            padding-bottom: 0.75rem; /* 12px */
+            font-weight: 700;
+        }
+        .section-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem; /* 24px gap */
+        }
+        .column {
+            flex: 1;
+            min-width: 20rem; /* 320px */
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); /* 224px */
+            gap: 0.75rem; /* 12px */
+        }
+        .skill-item {
+            background-color: #d1c4e9; /* Light Lavender for skill items */
+            padding: 0.75rem 1rem; /* 12px 16px */
+            border-radius: 0.5rem; /* 8px */
+            font-weight: 600;
+            text-align: center;
+            color: #6a1b9a; /* Darker purple for skill text */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .skill-item:hover {
+            transform: translateY(-3px);
+            background-color: #b39ddb; /* Slightly darker on hover */
+        }
+
+        /* Accomplishments List */
+        .accomplishments-list {
+            list-style: none;
+            padding: 0;
+        }
+        .accomplishments-list li {
+            background-color: #f3e5f5; /* Very light Lavender for list items */
+            margin-bottom: 0.75rem; /* 12px */
+            padding: 1rem; /* 16px */
+            border-left: 0.375rem solid #b39ddb; /* Medium Lavender border */
+            border-radius: 0.5rem; /* 8px */
+            font-size: 1rem; /* 16px */
+            color: #6a1b9a; /* Darker purple text */
+        }
+
+        /* Job and Education Entries */
+        .job-entry {
+            margin-bottom: 2rem; /* 32px */
+            padding-bottom: 1.5rem; /* 24px */
+            border-bottom: 1px dashed #e1bee7; /* Light lavender dashed line */
+        }
+        .job-entry:last-child {
+            border-bottom: none;
+        }
+        .job-entry h3 {
+            color: #9575cd; /* Medium Lavender for sub-headings */
+            margin-bottom: 0.5rem; /* 8px */
+            font-size: 1.75rem; /* 28px */
+            font-weight: 700;
+        }
+        .job-entry p.title {
+            font-style: italic;
+            color: #8e24aa; /* Medium purple text */
+            margin-bottom: 0.5rem; /* 8px */
+        }
+        .job-entry ul {
+            list-style: disc;
+            margin-left: 1.5rem; /* 24px */
+            padding: 0;
+            color: #6a1b9a;
+        }
+        .job-entry ul li {
+            margin-bottom: 0.375rem; /* 6px */
+        }
+        .education-entry {
+            margin-bottom: 1.5rem; /* 24px */
+        }
+        .education-entry h3 {
+            margin-bottom: 0.375rem; /* 6px */
+            color: #9575cd;
+            font-size: 1.375rem; /* 22px */
+            font-weight: 600;
+        }
+        .education-entry p {
+            margin: 0;
+            font-size: 1rem; /* 16px */
+            color: #8e24aa;
+        }
+
+        /* Video Container */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 1.5rem; /* 24px */
+            border-radius: 1rem; /* 16px */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background-color: #d1c4e9; /* Light Lavender for newsletter */
+            padding: 2rem; /* 32px */
+            border-radius: 1rem; /* 16px */
+            box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.08);
+        }
+        .newsletter-section h3 {
+            color: #6a1b9a; /* Darker purple for newsletter title */
+            font-size: 2.25rem; /* 36px */
+            margin-bottom: 0.75rem; /* 12px */
+            font-weight: 700;
+        }
+        .newsletter-section h4 {
+            color: #9575cd; /* Medium Lavender for newsletter sub-headings */
+            font-size: 1.75rem; /* 28px */
+            margin-top: 1.5rem; /* 24px */
+            margin-bottom: 0.75rem; /* 12px */
+            font-weight: 600;
+        }
+        .newsletter-stage {
+            background-color: #ede7f6; /* Very light Lavender for stages */
+            padding: 1.5rem; /* 24px */
+            margin-bottom: 1rem; /* 16px */
+            border-radius: 0.75rem; /* 12px */
+            border-left: 0.375rem solid #b39ddb; /* Medium Lavender border */
+            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+        }
+        .newsletter-stage h5 {
+            color: #6a1b9a;
+            font-size: 1.25rem; /* 20px */
+            margin-top: 0;
+            margin-bottom: 0.5rem; /* 8px */
+            font-weight: 600;
+        }
+        .newsletter-stage p {
+            margin-bottom: 0.5rem; /* 8px */
+            color: #6a1b9a;
+        }
+        .newsletter-stage ul {
+            list-style: disc;
+            margin-left: 1.5rem; /* 24px */
+            padding: 0;
+            color: #6a1b9a;
+        }
+
+        /* Contact Form Section */
+        .contact-form-section {
+            background-color: #ede7f6; /* Light Lavender for contact */
+            padding: 2.5rem; /* 40px */
+            border-radius: 1rem; /* 16px */
+            box-shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.08);
+            text-align: center;
+            margin-top: 1.5rem; /* 24px */
+        }
+        .contact-form-section h2 {
+            color: #9575cd;
+            margin-bottom: 1.5rem; /* 24px */
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem; /* 16px */
+            max-width: 40rem; /* 640px */
+            margin: 0 auto;
+        }
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            padding: 0.875rem; /* 14px */
+            border: 1px solid #e1bee7; /* Light lavender border */
+            border-radius: 0.5rem; /* 8px */
+            font-size: 1rem;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #f8f5fd; /* Off-white input background */
+            color: #6a1b9a;
+        }
+        .contact-form textarea {
+            min-height: 8.75rem; /* 140px */
+            resize: vertical;
+        }
+        .contact-form button {
+            background-color: #7e57c2; /* Medium Purple button */
+            color: white;
+            padding: 0.875rem 1.875rem; /* 14px 30px */
+            border: none;
+            border-radius: 0.5rem; /* 8px */
+            font-size: 1.25rem; /* 20px */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 700;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+        .contact-form button:hover {
+            background-color: #673ab7; /* Darker purple on hover */
+            transform: translateY(-3px);
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #424242; /* Dark gray for footer */
+            color: #f5f5f5; /* Light gray text */
+            text-align: center;
+            padding: 1.25rem; /* 20px */
+            margin-top: 2rem; /* 32px */
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.8rem;
+            }
+            header p {
+                font-size: 1.1rem;
+            }
+            .section h2 {
+                font-size: 2rem;
+            }
+            .section-content {
+                flex-direction: column;
+            }
+            .column {
+                min-width: 100%;
+            }
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            }
+            .section, .newsletter-section, .contact-form-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Anita Jackson Hill</h1>
+            <p class="text-lg text-justify">Experienced instructional leader with extensive experience in urban education, currently serving as Instructional Support teacher for Chicago Public Schools and a Virtual Instructional Coach with the Chicago Teachers Union. Proven expertise in mentoring new educators, leading professional development, and driving measurable improvements in teacher performance and student outcomes. Demonstrated success in instructional coaching, data-driven decision-making, and trauma-informed practices. Adept at leading school-wide initiatives, including MTSS, grant facilitation, and arts integration, with a strong history of fostering collaborative leadership through roles on ILTs, CTU, and LSC. Recognized for advancing equity, instructional quality, and student achievement across diverse school communities.</p>
+            <div class="contact-info-header">
+                <a href="tel:773-580-5601">773-580-5601</a> |
+                <a href="mailto:anitajhill@gmail.com">anitajhill@gmail.com</a> |
+                <a href="https://bold.pro/my/anita-jacksonhill-250716141300" target="_blank" rel="noopener noreferrer">WWW: Bold Profile</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Professional Page Section: Skills and Accomplishments -->
+        <section id="professional-page" class="section">
+            <h2>Professional Profile</h2>
+            <div class="section-content">
+                <div class="column">
+                    <h3>Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">Change management techniques</div>
+                        <div class="skill-item">Performance enhancement</div>
+                        <div class="skill-item">Impact measurement</div>
+                        <div class="skill-item">Proficient in digital learning platforms</div>
+                        <div class="skill-item">Engaged in regular skill advancement</div>
+                        <div class="skill-item">Results-driven professional</div>
+                        <div class="skill-item">Excellent collaboration abilities</div>
+                        <div class="skill-item">AI technology adoption</div>
+                        <div class="skill-item">Skilled in productivity software</div>
+                        <div class="skill-item">Proficient in virtual meeting platforms</div>
+                    </div>
+                </div>
+                <div class="column">
+                    <h3>Accomplishments</h3>
+                    <ul class="accomplishments-list">
+                        <li><strong>Creative Schools Fund Grants:</strong> Secured over $100,000 for arts and education programs.</li>
+                        <li>Served as arts liaison to school community to design, implement and monitor cohesive arts program for school community.</li>
+                        <li><strong>Sara Spurlark Award:</strong> University of Chicago Neighborhood Schools Program.</li>
+                        <li><strong>CFE Educator Impact Fund Grant:</strong> 2022-2023.</li>
+                        <li><strong>Teach Plus Senior Change Agent:</strong> Led initiatives on equity and instructional change.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="mt-8 text-2xl text-purple-800 font-semibold border-b-2 border-purple-400 pb-2">Experience</h3>
+            <div class="job-entry">
+                <h3>Instructional Leader & Educator</h3>
+                <p class="title">Jackie Robinson School</p>
+                <ul>
+                    <li>Led schoolwide instructional initiatives to improve literacy, teaching strategies, and student achievement.</li>
+                    <li>Coordinated Multi-Tiered System of Support (MTSS), improving intervention strategies and academic outcomes for all learners.</li>
+                    <li>Served on the Instructional Leadership Team (ILT), analyzing performance data and supporting staff development through coaching and strategic planning.</li>
+                    <li>Directed Tutor Corps operations, ensuring alignment with district goals and improved student performance.</li>
+                </ul>
+            </div>
+
+            <div class="job-entry">
+                <h3>Virtual Instructional Coach</h3>
+                <p class="title">CTU/AFT</p>
+                <ul>
+                    <li>Coached and mentored new educators citywide via virtual platforms, resulting in 100% of participants achieving proficient or higher teacher performance ratings.</li>
+                    <li>Facilitated professional development in instructional best practices, social-emotional learning, and trauma-informed teaching.</li>
+                    <li>Provided actionable, data-driven feedback to enhance curriculum design, classroom management, and student engagement.</li>
+                    <li>Guided reflective practice using student work and instructional artifacts to drive teacher growth.</li>
+                </ul>
+            </div>
+
+            <div class="job-entry">
+                <h3>Leadership & Advocacy Roles</h3>
+                <p class="title">Various</p>
+                <ul>
+                    <li><strong>CTU School Delegate & LSC Teacher Representative:</strong> Advocated for staff, contributed to school governance, and participated in strategic planning and budgeting.</li>
+                    <li><strong>Arts Liaison:</strong> Built and maintained relationships with arts organizations to enrich student learning.</li>
+                    <li><strong>Grant Program Facilitator:</strong> Secured and implemented funding to support academic enrichment and school-wide initiatives.</li>
+                </ul>
+            </div>
+
+            <h3 class="mt-8 text-2xl text-purple-800 font-semibold border-b-2 border-purple-400 pb-2">Education</h3>
+            <div class="education-entry">
+                <h3>Illinois State University at Normal, IL</h3>
+                <p>Educational Doctorate Degree (ABD) in Curriculum and Instruction</p>
+            </div>
+            <div class="education-entry">
+                <h3>National Louis University at Chicago, IL</h3>
+                <p>Master of Arts in Education in Curriculum and Instruction</p>
+            </div>
+            <div class="education-entry">
+                <h3>Roosevelt University at Chicago, IL</h3>
+                <p>Bachelor of Arts in Elementary School Education</p>
+            </div>
+
+            <h3 class="mt-8 text-2xl text-purple-800 font-semibold border-b-2 border-purple-400 pb-2">Certifications</h3>
+            <ul class="accomplishments-list">
+                <li>Type 03, K-9 Endorsements: Language Arts & Social Science</li>
+                <li>Extensive professional development in coaching, data systems, and instructional frameworks</li>
+            </ul>
+        </section>
+
+        <!-- Self-Pacing Plan Section -->
+        <section id="self-pacing-plan" class="section">
+            <h2>Mastery-Based Learning: Self-Pacing Plan</h2>
+            <p class="text-gray-700 mb-4">This section summarizes the self-pacing plan designed to support young learners in achieving mastery through consistent, individualized practice.</p>
+
+            <h3 class="text-xl font-semibold text-purple-800 mb-3">Self-Pacing Interval</h3>
+            <p class="mb-4">Students will self-pace week by week for at least 15 to 30 minutes per day as part of their independent learning and practice after individual or small group instruction. This interval is chosen because young learners need daily consistent time to practice skills for mastery. Daily exit tickets provide data for lesson design, and Google Classroom helps students track assignments and feedback. A 5-day week allows for regular check-ins to ensure students are on a similar trajectory before moving to the next week.</p>
+
+            <h3 class="text-xl font-semibold text-purple-800 mb-3">Activity Prioritization & Differentiation (DOK Levels)</h3>
+            <p class="mb-4">Activities are prioritized using a "Must Do," "Should Do," and "Aspire to Do" framework, linked to Depth of Knowledge (DOK) levels to ensure appropriate challenge and engagement.</p>
+            <ul class="list-disc ml-5 mb-4 text-purple-900">
+                <li><strong>DOK Level 1: Recall and Reproduction (Must Do)</strong>
+                    <p class="ml-4 italic">Focus: Recognizing familiar rhyming words from songs, stories, and poems.</p>
+                    <p class="ml-4 text-sm">Example: Playing a rhyming game where students listen to a song and raise their hand every time they hear a rhyming word.</p>
+                </li>
+                <li><strong>DOK Level 2: Skills and Concepts (Should Do)</strong>
+                    <p class="ml-4 italic">Focus: Identifying rhyming words from a group and understanding why they rhyme.</p>
+                    <p class="ml-4 text-sm">Example: Students work in pairs to pick rhyming pairs from picture cards and explain why they rhyme.</p>
+                </li>
+                <li><strong>DOK Level 3: Strategic Thinking (Aspire to Do)</strong>
+                    <p class="ml-4 italic">Focus: Generating their own rhyming words and using them in simple sentences or stories.</p>
+                    <p class="ml-4 text-sm">Example: Creating a short poem using words that rhyme or making up a word that rhymes with a given word.</p>
+                </li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-purple-800 mb-3">Student Progress Tracking</h3>
+            <p class="mb-4">Student progress is tracked through a daily clipboard sheet, Google Classroom gradebook, and required assignment submissions. This provides opportunities for students and parents to view work and teacher feedback. Whole group, small group, and individual trackers are used, with a whole group tracker on a bulletin board for peer support and individual trackers in Google Classroom for consistent accessibility.</p>
+
+            <h3 class="text-xl font-semibold text-purple-800 mb-3">Collaboration Strategies</h3>
+            <ul class="list-disc ml-5 mb-4 text-purple-900">
+                <li><strong>Structured Collaboration:</strong> Students work with partners or in groups at learning stations using choice boards and Google Slides to organize tasks. A "Choice Board: Recognize and Produce Rhyming Words" guides activities like Rhyme Hunt, Rhyming Song, and Picture Match.</li>
+                <li><strong>Organic Collaboration:</strong> The choice board is available on paper and digitally. Students who have shown mastery are listed on a bulletin board and can be chosen by others for support. Strategies like organizing students in pairs for discourse and using anchor charts foster independent and peer support.</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-purple-800 mb-3">Motivation Strategies</h3>
+            <ul class="list-disc ml-5 mb-4 text-purple-900">
+                <li><strong>For Students Falling Behind:</strong> Differentiation ideas specific to the unit are used, such as providing picture cards, rhyming word bingo, small group focused attention, and practice on electronic platforms (I-Ready, IXL).</li>
+                <li><strong>For Students Moving Quickly:</strong> Choice boards and extension ideas are provided. Advanced students are encouraged to write rhyming poems, play "I Spy" with rhymes, or create rhyming books. Interests like Fortnite are tapped into for engaging activities such as a "Rhyme Battle."</li>
+                <li><strong>Addressing Challenges:</strong> An annual interest inventory helps select content and design lessons connected to student interests, such as a "Sprunki Song Sing-Along" for students who like Sprunki characters.</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-purple-800 mb-3">Student Reflection</h3>
+            <p class="mb-4">Students reflect on their learning through exit tickets (paper and/or Google Classroom) and an SEL Check-in created in Google Forms. The SEL check-in includes questions about feelings, sleep, breakfast, and a daily content-specific question (e.g., "write 2 rhyming words"). Menti is also considered for future use.</p>
+        </section>
+
+        <!-- Blended Learning Section -->
+        <section id="blended-learning" class="section">
+            <h2>Blended Learning Instruction Plan</h2>
+            <p class="text-gray-700 mb-4">This section showcases the blended learning approach, integrating instructional videos and diverse resources to support the learning objective: CCSS.ELA-Literacy.RF.K.2.a Recognize and produce rhyming words.</p>
+
+            <h3 class="text-xl font-semibold text-purple-800 mb-3">Instructional Video: Recognize and Produce Rhyming Words</h3>
+            <p class="mb-4">The video covers the learning objective: "Student is able to produce words that rhyme." It introduces rhyming words, explains their importance for reading, and provides interactive practice using body parts as examples (nose/rose, hand/band, head/bed, hair/chair, ear/cheer). Students are guided to use work mats and cards to match rhyming words and then draw or write rhyming words on a worksheet.</p>
+            <div class="video-container">
+                <iframe src="https://go.screenpal.com/player/cT1DbynXUAs" allowfullscreen></iframe>
+            </div>
+
+            <h3 class="text-xl font-semibold text-purple-800 mb-3">Student Engagement with Videos</h3>
+            <p class="mb-4">To keep students engaged, they use physical visuals (laminated rhyming word cards) from the video during playback to share answers. These cards can also be used at stations/centers for individual practice. A printable worksheet is provided for students to draw or write rhyming words after watching.</p>
+            <p class="text-gray-700 italic mb-2">Example Worksheet:</p>
+            <div class="bg-gray-50 p-4 rounded-md border border-gray-200 text-sm mb-4">
+                <p>Name___________________________ Date__________</p>
+                <p>I can produce a rhyming word.</p>
+                <p>Draw or write a word that rhymes.</p>
+                <p>bed __________</p>
+                <p>chair __________</p>
+                <p>deer __________</p>
+                <p>cat __________</p>
+            </div>
+
+            <h3 class="text-xl font-semibold text-purple-800 mb-3">How to Watch Videos Guide</h3>
+            <p class="mb-4">A simple guide helps students engage effectively with instructional videos:</p>
+            <ul class="list-disc ml-5 mb-4 text-purple-900">
+                <li><strong>Before you watch…</strong> Find your seat, put on headphones, have video tools (word/picture cards) ready.</li>
+                <li><strong>While you watch…</strong> Pause to choose word/picture cards when prompted, rewind if needed, watch again if necessary.</li>
+                <li><strong>After you watch…</strong> Ask 3 before me if questions remain, go to Google Classroom for today's assignment, complete the Exit Ticket for the video.</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-purple-800 mb-3">Alternate Instructional Resources</h3>
+            <ul class="list-disc ml-5 mb-4 text-purple-900">
+                <li><strong>Craft Stick Game (Identifying Rhyming Words):</strong> Students use craft sticks with happy/sad faces to indicate if two spoken words rhyme (e.g., "car - tar" or "right - wrong"). This activity reinforces auditory discrimination.</li>
+                <li><strong>Rhyming Books and Poems:</strong> Students identify rhyming words while listening to or reading stories/poems. They can replace words with rhyming alternatives or circle rhyming words in laminated texts. Examples include "Brush, Brush, Brush Your Teeth," "Scrub-a Dub, Dub," "I’m a Little Teapot," and "Hickory Dickory Dock."</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-purple-800 mb-3">Instructional Strategies</h3>
+            <ul class="list-disc ml-5 mb-4 text-purple-900">
+                <li><strong>One-on-One Instruction:</strong> Data determines who needs one-on-one time, which is scheduled on daily slides.</li>
+                <li><strong>Small-Group Instruction:</strong> Daily small group instruction is built into the schedule during center rotations, based on assessment data and student needs. Choice boards and lessons are integrated into daily centers.</li>
+                <li><strong>Whole-Class Instruction:</strong> Used for introducing concepts, structured mini-lessons, creating anchor chart, or sharing videos. It also reinforces big ideas based on student data, through reteaching, sharing examples, or using tools like IXL group jam to review a skill so all students can examine a question develop a shared understanding through discussion what the best choice and why. The consensus mat strategy is also employed.</li>
+            </ul>
+        </section>
+
+        <!-- Culmination Lesson Section -->
+        <section id="culmination-lesson" class="section">
+            <h2>Culmination Lesson: Recognizing Rhymes</h2>
+            <p class="text-gray-700 mb-4">This section summarizes the culmination lesson focused on demonstrating understanding of spoken words, syllables, and sounds, specifically recognizing and producing rhyming words (CCSS.ELA-Literacy.RF.K.2.a).</p>
+
+            <h3 class="text-xl font-semibold text-purple-800 mb-3">Learning Objective & Student-Facing Objective</h3>
+            <p class="mb-4"><strong>Learning Objective:</strong> Students will learn to identify and recognize rhyming words by listening to and creating rhymes to determine whether a word rhymes.</p>
+            <p class="mb-4"><strong>Student-Facing Objective:</strong> "We will learn how to find words that sound the same at the end, like 'cat' and 'hat.'"</p>
+            <p class="mb-4">The lesson emphasizes that recognizing rhyming words is about hearing and confirming a rhyme, a more passive and auditory skill compared to actively identifying them.</p>
+
+            <h3 class="text-xl font-semibold text-purple-800 mb-3">Culmination Lesson Video</h3>
+            <p class="mb-4">This video provides further insights into the culmination lesson, focusing on recognizing rhymes and demonstrating understanding of spoken words and sounds.</p>
+            <div class="video-container">
+                <iframe src="https://go.screenpal.com/player/cT1bIsnXxkM" allowfullscreen></iframe>
+            </div>
+
+            <h3 class="text-xl font-semibold text-purple-800 mb-3">Mastery Checks</h3>
+            <ul class="list-disc ml-5 mb-4 text-purple-900">
+                <li>Given 2 pictures, identify if the 2 words rhyme.</li>
+                <li>Given 2 words, identify which 2 words rhyme.</li>
+                <li>Recreate Rhyming Practice 1 as Mastery Check (sample provided).</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-purple-800 mb-3">Learner Practice Activities</h3>
+            <ul class="list-disc ml-5 mb-4 text-purple-900">
+                <li><strong>Lesson 1: Rhyme Time Listening Game:</strong> Students give thumbs up/down for rhyming pairs, supported by picture cards.</li>
+                <li><strong>Lesson 2: Rhyming Picture Match:</strong> Students work in pairs to match pictures of rhyming words.</li>
+                <li><strong>Lesson 3: Rhyming Word Hopscotch:</strong> Students physically identify rhyming pairs by hopping on a grid with rhyming words.</li>
+                <li><strong>Lesson 4: Rhyme Sorting Station:</strong> Students sort word cards into rhyming families.</li>
+                <li><strong>Lesson 5: Create-a-Rhyme Book:</strong> Students generate and illustrate rhyming words in a booklet format.</li>
+            </ul>
+        </section>
+
+        <!-- ILT Bi-Weekly Newsletter Section -->
+        <section id="ilt-newsletter" class="section newsletter-section">
+            <h3>The ILT Learning Cycle: Empowering Teacher Growth</h3>
+            <p class="text-gray-700 text-lg mb-4">Your bi-weekly spotlight on instructional excellence</p>
+
+            <h4>Understanding Our Learning Cycle</h4>
+            <p class="mb-4">Our Instructional Leadership Team (ILT) has designed a continuous learning cycle to support every teacher's professional growth and enhance student outcomes. This cycle provides a structured approach to identify challenges, implement strategies, and reflect on our collective impact.</p>
+
+            <div class="newsletter-stage">
+                <h5>Stage 1: Plan</h5>
+                <p>Focuses on collaboratively identifying student needs, setting clear learning goals, and designing effective instructional strategies.</p>
+                <p class="font-semibold text-purple-800">Problem of Practice Spotlight:</p>
+                <p>"Inconsistent application of differentiated strategies during lesson planning for diverse learners."</p>
+                <p class="font-semibold text-purple-800">Teacher Implementation Snapshot:</p>
+                <p><em>[To be filled with specific data/examples from this cycle]</em></p>
+            </div>
+
+            <div class="newsletter-stage">
+                <h5>Stage 2: Teach & Observe</h5>
+                <p>Involves delivering planned lessons, experimenting with new strategies, and observing student engagement and learning in action.</p>
+                <p class="font-semibold text-purple-800">Problem of Practice Spotlight:</p>
+                <p>"Ensuring consistent implementation of active learning strategies across all classrooms."</p>
+                <p class="font-semibold text-purple-800">Teacher Implementation Snapshot:</p>
+                <ul class="list-disc ml-5">
+                    <li>65% of teachers actively using new collaborative group structures.</li>
+                    <li>40% of classrooms observed utilizing new formative assessment techniques.</li>
+                    <li>20% of teachers participating in peer observations this cycle.</li>
+                </ul>
+            </div>
+
+            <div class="newsletter-stage">
+                <h5>Stage 3: Analyze & Adapt</h5>
+                <p>Focuses on collecting and analyzing student data and teacher reflections to inform instructional adjustments and next steps.</p>
+                <p class="font-semibold text-purple-800">Problem of Practice Spotlight:</p>
+                <p>"Translating assessment data into timely and effective instructional adjustments for individual student needs."</p>
+                <p class="font-semibold text-purple-800">Teacher Implementation Snapshot:</p>
+                <p><em>[To be filled with specific data/examples from this cycle]</em></p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-form-section">
+            <h2>Get in Touch</h2>
+            <p class="text-gray-700 mb-6">I'd love to connect and discuss how my expertise can benefit your organization or initiative. Please feel free to reach out!</p>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required class="rounded-md">
+                <input type="email" placeholder="Your Email" required class="rounded-md">
+                <input type="text" placeholder="Subject" class="rounded-md">
+                <textarea placeholder="Your Message" required class="rounded-md"></textarea>
+                <button type="submit" class="rounded-md">Send Message</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center p-4 mt-8 rounded-t-lg">
+        <p>&copy; 2024 Anita Jackson Hill. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
